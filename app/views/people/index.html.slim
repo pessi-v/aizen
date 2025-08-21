@@ -1,0 +1,11 @@
+p style="color: green" = notice
+
+h1 People
+
+#people
+  - @people.each do |person|
+    == render person
+    p
+      = link_to "Show this person", person
+
+= link_to "New person", new_person_path
