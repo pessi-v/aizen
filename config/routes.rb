@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :users
   resources :people
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
@@ -11,5 +12,6 @@ Rails.application.routes.draw do
   # get "service-worker" => "rails/pwa#service_worker", as: :pwa_service_worker
 
   # Defines the root path route ("/")
-  root "people#index"
+  root "users#frontpage"
+  get "swipe", to: "people#swipe", as: :swipe
 end
