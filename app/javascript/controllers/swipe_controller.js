@@ -5,8 +5,6 @@ export default class extends Controller {
   connect() {
     this.tinderContainer = this.element
     this.allCards = this.element.querySelectorAll('.tinder--card')
-    this.nope = this.element.querySelector('#nope')
-    this.love = this.element.querySelector('#love')
     
     this.initCards()
     this.setupEventListeners()
@@ -77,8 +75,12 @@ export default class extends Controller {
         const deltaY = event.clientY - startY
         
         el.classList.remove('moving')
-        this.tinderContainer.classList.remove('tinder_love')
-        this.tinderContainer.classList.remove('tinder_nope')
+        
+        // Remove status classes after animation
+        setTimeout(() => {
+          this.tinderContainer.classList.remove('tinder_love')
+          this.tinderContainer.classList.remove('tinder_nope')
+        }, 300)
         
         const moveOutWidth = document.body.clientWidth
         const keep = Math.abs(deltaX) < 80
@@ -140,8 +142,12 @@ export default class extends Controller {
         const deltaY = event.changedTouches[0].clientY - touchStartY
         
         el.classList.remove('moving')
-        this.tinderContainer.classList.remove('tinder_love')
-        this.tinderContainer.classList.remove('tinder_nope')
+        
+        // Remove status classes after animation
+        setTimeout(() => {
+          this.tinderContainer.classList.remove('tinder_love')
+          this.tinderContainer.classList.remove('tinder_nope')
+        }, 300)
         
         const moveOutWidth = document.body.clientWidth
         const keep = Math.abs(deltaX) < 80
@@ -164,35 +170,5 @@ export default class extends Controller {
         }
       })
     })
-    
-    // Button event listeners
-    if (this.nope) {
-      this.nope.addEventListener('click', this.createButtonListener(false).bind(this))
-    }
-    
-    if (this.love) {
-      this.love.addEventListener('click', this.createButtonListener(true).bind(this))
-    }
-  }
-  
-  createButtonListener(love) {
-    return (event) => {
-      const cards = this.element.querySelectorAll('.tinder--card:not(.removed)')
-      const moveOutWidth = document.body.clientWidth * 1.5
-      
-      if (!cards.length) return false
-      
-      const card = cards[0]
-      card.classList.add('removed')
-      
-      if (love) {
-        card.style.transform = `translate(${moveOutWidth}px, -100px) rotate(-30deg)`
-      } else {
-        card.style.transform = `translate(-${moveOutWidth}px, -100px) rotate(30deg)`
-      }
-      
-      this.initCards()
-      event.preventDefault()
-    }
   }
 }

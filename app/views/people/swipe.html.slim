@@ -43,18 +43,17 @@ css:
     opacity: 0.7;
     transform: scale(1);
   }
-  .tinder_nope .fa-remove {
+  .tinder_nope .fa-times {
     opacity: 0.7;
     transform: scale(1);
   }
+  .fa-heart {
+    color: #FFACE4;
+  }
+  .fa-remove {
+    color: #CDD6DD;
+  }
   .tinder--cards {
-    flex-grow: 1;
-    padding-top: 40px;
-    text-align: center;
-    display: flex;
-    justify-content: center;
-    align-items: flex-end;
-    z-index: 1;
   }
   .tinder--card {
     display: inline-block;
@@ -108,18 +107,13 @@ css:
     font-size: 32px;
     vertical-align: middle;
   }
-  .fa-heart {
-    color: #FFACE4;
-  }
-  .fa-remove {
-    color: #CDD6DD;
-  }
+  
 
 .tinder data-controller="swipe"
   .tinder--status
     i.fa.fa-remove
     i.fa.fa-heart
-  .tinder--cards
+  .tinder--cards.flex.justify-center
     .tinder--card.bg-zinc-100
       .flex-col
         .carousel.carousel-vertical.rounded-box.h-96.w-full
@@ -219,25 +213,8 @@ css:
 
       h3.text-zinc-800 Bob the Bob
       p.text-zinc-800 This is a demo for Tinder like swipe cards
-  .tinder--buttons
-    button#nope
-      i.fa.fa-remove
-    button#love
-      i.fa.fa-heart
 
-/ .flex-col
-/   .carousel.carousel-vertical.rounded-box.h-96.w-full
-/     .carousel-item.w-full.h-full
-/       img.w-full.object-cover src="https://img.daisyui.com/images/stock/photo-1559703248-dcaaec9fab78.webp"
-/     .carousel-item.w-full.h-full
-/       img.w-full.object-cover src="https://img.daisyui.com/images/stock/photo-1565098772267-60af42b81ef2.webp"
-/     .carousel-item.w-full.h-full
-/       img.w-full.object-cover src="https://img.daisyui.com/images/stock/photo-1572635148818-ef6fd45eb394.webp"
-/     .carousel-item.w-full.h-full
-/       img.w-full.object-cover src="https://img.daisyui.com/images/stock/photo-1494253109108-2e30c049369b.webp"
-/     .carousel-item.w-full.h-full
-/       img.w-full.object-cover src="https://img.daisyui.com/images/stock/photo-1550258987-190a2d41a8ba.webp"
-/     .carousel-item.w-full.h-full
-/       img.w-full.object-cover src="https://img.daisyui.com/images/stock/photo-1559181567-c3190ca9959b.webp"
-/     .carousel-item.w-full.h-full
-/       img.w-full.object-cover src="https://img.daisyui.com/images/stock/photo-1601004890684-d8cbf643f5f2.webp"
+<div class="tinder--buttons">
+  <button id="nope"><i class="fa fa-remove"></i></button>
+  <button id="love"><i class="fa fa-heart"></i></button>
+</div>
