@@ -19,7 +19,6 @@ default: &default
   # https://guides.rubyonrails.org/configuring.html#database-pooling
   pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
 
-
 development:
   <<: *default
   database: aizen_development
@@ -84,6 +83,8 @@ production:
     database: aizen_production
     username: aizen
     password: <%= ENV["AIZEN_DATABASE_PASSWORD"] %>
+    host: <%= ENV["DB_HOST"] %>
+    port: 5432
   cache:
     <<: *primary_production
     database: aizen_production_cache
